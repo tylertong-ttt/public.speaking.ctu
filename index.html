@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <title>FACT, NOT FLUFF — Chapter 7 | Public Speaking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress"><span id="progressBar"></span></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Fact Not Fluff home">
+      <img src="assets/logo.png" alt="DA HQ CAN THO logo">
+      <span>FACT, NOT FLUFF</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#overview">Overview</a>
+      <a href="#part1">Part 01</a>
+      <a href="#part2">Part 02</a>
+      <a href="#part3">Part 03</a>
+      <a href="#part4">Part 04</a>
+      <a href="#part5">Part 05</a>
+      <a href="#qa">Q&amp;A</a>
+    </nav>
+    <div class="actions">
+      <button id="presentBtn" class="icon-btn" title="Presentation mode">Present</button>
+      <button id="editBtn" class="icon-btn ghost" title="Edit content locally">Edit</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">CHAPTER 07 · GATHERING MATERIALS</div>
+        <h1>FACT,<br><span>NOT FLUFF.</span></h1>
+        <p class="hero-lead">A visual guide to gathering, checking and shaping materials for a persuasive public speech.</p>
+        <div class="hero-meta">
+          <span>PUBLIC SPEAKING</span>
+          <span>30 MINUTES</span>
+          <span>13 SPEAKERS</span>
+        </div>
+        <div class="hero-cta">
+          <a class="primary-btn" href="#overview">Start presentation <span>↓</span></a>
+          <button class="text-btn" id="showFlow">View 5-part flow</button>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="orb"></div>
+        <div class="hero-card">
+          <span class="mini-label">CORE IDEA</span>
+          <strong>Gather → Verify → Use</strong>
+          <p>Turn scattered information into material the audience can trust.</p>
+        </div>
+        <div class="floating-note note-a">PERSONAL<br>EXPERIENCE</div>
+        <div class="floating-note note-b">SOURCE<br>QUALITY</div>
+        <div class="floating-note note-c">CLEAR<br>NOTES</div>
+      </div>
+    </section>
+
+    <section id="overview" class="section overview">
+      <div class="section-heading reveal">
+        <div>
+          <span class="kicker">THE MAP</span>
+          <h2>One presentation.<br><span>Five clear parts.</span></h2>
+        </div>
+        <p>Each part is split into small speaking blocks. The MC controls the screen; the speaker stays focused on the audience.</p>
+      </div>
+
+      <div class="flow-grid five">
+        <a href="#part1" class="flow-card reveal">
+          <span class="flow-num">01</span>
+          <div>
+            <span class="flow-tag">KNOW YOUR MATERIALS</span>
+            <h3>Start with what you know.</h3>
+            <p>Personal knowledge → library research → credible supporting material.</p>
+          </div>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="#part2" class="flow-card reveal">
+          <span class="flow-num">02</span>
+          <div>
+            <span class="flow-tag">SEARCH SMARTER</span>
+            <h3>Find the right information.</h3>
+            <p>Specific keywords → specialist resources → evaluate the source.</p>
+          </div>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="#part3" class="flow-card reveal">
+          <span class="flow-num">03</span><div><span class="flow-tag">SEARCH THE INTERNET</span><h3>Find the right information.</h3><p>Specific keywords → specialist resources → evaluate sources.</p></div><span class="arrow">↗</span>
+        </a>
+        <a href="#part4" class="flow-card reveal">
+          <span class="flow-num">04</span><div><span class="flow-tag">INTERVIEW</span><h3>Ask, listen, organize.</h3><p>Prepare → conduct → review and transcribe.</p></div><span class="arrow">↗</span>
+        </a>
+        <a href="#part5" class="flow-card reveal">
+          <span class="flow-num">05</span><div><span class="flow-tag">RESEARCH &amp; NOTE-TAKING</span><h3>Make research usable.</h3><p>Start early → keep clear notes → refine your ideas.</p></div><span class="arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="stage-strip five reveal">
+        <div><b>01</b><span>KNOW</span></div><i></i><div><b>02</b><span>LIBRARY</span></div><i></i><div><b>03</b><span>SEARCH</span></div><i></i><div><b>04</b><span>INTERVIEW</span></div><i></i><div><b>05</b><span>SHAPE</span></div>
+      </div>
+    </section>
+
+    <section id="part1" class="part-section dark section">
+      <div class="part-header reveal"><div class="part-number">01</div><div><span class="kicker">PART ONE</span><h2>Using own knowledge.</h2><p>Use personal knowledge and experience, supported by outside information.</p></div></div>
+      <div class="speaker-grid" id="part1Speakers"></div>
+    </section>
+    <section id="part2" class="part-section section">
+      <div class="part-header reveal"><div class="part-number">02</div><div><span class="kicker">PART TWO</span><h2>Library research.</h2><p>Use library experts, catalogues, databases and reference works.</p></div></div>
+      <div class="speaker-grid" id="librarySpeakers"></div>
+    </section>
+    <section id="part3" class="part-section dark section">
+      <div class="part-header reveal"><div class="part-number">03</div><div><span class="kicker">PART THREE</span><h2>Searching the Internet.</h2><p>Search with specific keywords, choose specialized resources and evaluate documents.</p></div></div>
+      <div class="speaker-grid" id="internetSpeakers"></div>
+    </section>
+    <section id="part4" class="part-section section">
+      <div class="part-header reveal"><div class="part-number">04</div><div><span class="kicker">PART FOUR</span><h2>Interview.</h2><p>Prepare, conduct and follow up on an interview.</p></div></div>
+      <div class="speaker-grid" id="interviewSpeakers"></div>
+    </section>
+    <section id="part5" class="part-section soft section">
+      <div class="part-header reveal"><div class="part-number">05</div><div><span class="kicker">PART FIVE</span><h2>Research &amp; note-taking tips.</h2><p>Start early, organize notes and stay open to what the materials reveal.</p></div></div>
+      <div class="speaker-grid" id="tipsSpeakers"></div>
+    </section>
+
+    <section id="qa" class="section closing">
+      <div class="closing-panel reveal">
+        <div class="closing-mark">?</div>
+        <div>
+          <span class="kicker">FINAL CHECK</span>
+          <h2>Fact, not fluff.</h2>
+          <p>Before using a piece of information, ask: <strong>Who made it? Who supports it? How recent is it? What does it add to my speech?</strong></p>
+          <div class="takeaway-row">
+            <span>KNOW</span><span>SEARCH</span><span>VERIFY</span><span>SHAPE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><img src="assets/logo.png" alt=""> <span>CHAPTER 07 · PUBLIC SPEAKING</span></div>
+    <span>Static presentation website · GitHub Pages ready</span>
+  </footer>
+
+  <div id="editPanel" class="edit-panel" aria-hidden="true">
+    <div class="edit-panel-inner">
+      <div>
+        <span class="kicker">LOCAL EDIT MODE</span>
+        <h2>Update the presentation.</h2>
+        <p>Edit highlighted text directly on the page. Images are stored in this browser. Use Export/Import to move your edits to another device.</p>
+      </div>
+      <div class="edit-tools">
+        <button id="saveBtn" class="primary-btn">Save locally</button>
+        <button id="exportBtn" class="icon-btn">Export JSON</button>
+        <label class="icon-btn file-btn">Import JSON<input id="importInput" type="file" accept=".json"></label>
+        <button id="resetBtn" class="danger-btn">Reset</button>
+        <button id="closeEditBtn" class="icon-btn ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="presentOverlay" class="present-overlay" aria-hidden="true">
+    <div class="present-top">
+      <span id="presentCounter">01</span>
+      <span>FACT, NOT FLUFF</span>
+      <button id="closePresent" class="icon-btn ghost">Exit</button>
+    </div>
+    <div id="presentContent" class="present-content"></div>
+    <div class="present-controls">
+      <button id="prevSlide" class="icon-btn">←</button>
+      <button id="nextSlide" class="primary-btn">Next →</button>
+    </div>
+  </div>
+
+  <template id="speakerTemplate">
+    <article class="speaker-card reveal">
+      <div class="speaker-media">
+        <div class="media-placeholder">
+          <span class="media-icon">＋</span>
+          <span class="media-text">Add visual</span>
+        </div>
+        <img class="speaker-image" alt="" hidden>
+        <input class="image-input" type="file" accept="image/*">
+        <button class="remove-image" type="button" title="Remove image" aria-label="Remove image">×</button>
+      </div>
+      <div class="speaker-content">
+        <div class="speaker-top">
+          <span class="speaker-index"></span>
+          <span class="speaker-name" contenteditable="false"></span>
+        </div>
+        <h3 class="speaker-title" contenteditable="false"></h3>
+        <div class="speaker-tags"></div>
+        <p class="speaker-summary" contenteditable="false"></p>
+        <div class="card-actions"><button class="card-edit" type="button">Edit this topic</button></div>
+        <div class="three-step">
+          <div><span>01</span><b>HOOK</b><small class="step1"></small></div>
+          <div><span>02</span><b>CORE</b><small class="step2"></small></div>
+          <div><span>03</span><b>TAKEAWAY</b><small class="step3"></small></div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <div id="detailModal" class="detail-modal" aria-hidden="true">
+    <div class="detail-backdrop" data-close-detail></div>
+    <article class="detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <button class="detail-close" type="button" data-close-detail aria-label="Close">×</button>
+      <img id="detailImage" class="detail-image" alt="" hidden>
+      <div class="detail-body"><span id="detailName" class="kicker"></span><h2 id="detailTitle"></h2>
+        <p id="detailSummary"></p><div id="detailTags" class="speaker-tags"></div>
+        <div id="detailSteps" class="detail-steps"></div>
+        <div class="detail-view-actions"><button id="editDetailBtn" class="primary-btn" type="button">Edit this topic</button></div>
+        <form id="detailEditor" class="detail-editor" hidden>
+          <label>Name<input id="editName" type="text"></label>
+          <label>Title<input id="editTitle" type="text"></label>
+          <label>Summary / full content<textarea id="editSummary" rows="6"></textarea></label>
+          <label>Keywords (separate with commas)<input id="editTags" type="text"></label>
+          <label>Step 1<input id="editStep1" type="text"></label><label>Step 2<input id="editStep2" type="text"></label><label>Step 3<input id="editStep3" type="text"></label>
+          <label class="detail-upload">Choose landscape image<input id="detailImageInput" type="file" accept="image/*"></label>
+          <div class="editor-actions"><button class="primary-btn" type="submit">Save changes</button><button id="removeDetailImage" class="danger-btn" type="button">Remove image</button><button id="cancelDetailEdit" class="icon-btn" type="button">Cancel</button></div>
+        </form>
+      </div>
+    </article>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
