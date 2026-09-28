@@ -228,5 +228,111 @@
     </article>
   </div>
   <script src="app.js"></script>
+  <!-- ================= SOUNDBOARD PHÍM TẮT 1-5 ================= -->
+<div id="quickMusicBox" style="position:fixed;bottom:15px;left:15px;z-index:9999;font-family:sans-serif;">
+  <button id="toggleMusicBtn" type="button" style="background:#07111f;color:#36b9ee;border:1px solid #36b9ee;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+    🎵 Cài nhạc (Phím 1-5)
+  </button>
+
+  <div id="musicPopup" style="display:none;position:absolute;bottom:40px;left:0;width:310px;background:#0d1b2c;color:#fff;padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.15);box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+    <div style="font-size:12px;font-weight:700;color:#36b9ee;margin-bottom:10px;">DÁN LINK NHẠC (TỰ LƯU TRÊN TRÌNH DUYỆT)</div>
+    <div style="display:grid;gap:6px;font-size:11px;">
+      <label>Phím 1: <input type="text" id="mUrl1" placeholder="Link nhạc 1 (.mp3)" style="width:100%;box-sizing:border-box;padding:5px;border-radius:6px;border:1px solid #334e68;background:#15283e;color:#fff;font-size:11px;"></label>
+      <label>Phím 2: <input type="text" id="mUrl2" placeholder="Link nhạc 2 (.mp3)" style="width:100%;box-sizing:border-box;padding:5px;border-radius:6px;border:1px solid #334e68;background:#15283e;color:#fff;font-size:11px;"></label>
+      <label>Phím 3: <input type="text" id="mUrl3" placeholder="Link nhạc 3 (.mp3)" style="width:100%;box-sizing:border-box;padding:5px;border-radius:6px;border:1px solid #334e68;background:#15283e;color:#fff;font-size:11px;"></label>
+      <label>Phím 4: <input type="text" id="mUrl4" placeholder="Link nhạc 4 (.mp3)" style="width:100%;box-sizing:border-box;padding:5px;border-radius:6px;border:1px solid #334e68;background:#15283e;color:#fff;font-size:11px;"></label>
+      <label>Phím 5: <input type="text" id="mUrl5" placeholder="Link nhạc 5 (.mp3)" style="width:100%;box-sizing:border-box;padding:5px;border-radius:6px;border:1px solid #334e68;background:#15283e;color:#fff;font-size:11px;"></label>
+    </div>
+    <div style="margin-top:12px;display:flex;align-items:center;gap:8px;font-size:11px;">
+      <span>Âm lượng:</span>
+      <input type="range" id="mVol" min="5" max="100" value="30" style="flex:1;cursor:pointer;">
+      <span id="mVolNum" style="color:#36b9ee;">30%</span>
+    </div>
+    <div style="margin-top:8px;font-size:10px;color:#8fa5bb;">* Bấm 1-5 để bật/tạm dừng. Bấm 0 để tắt hẳn.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const STORE_KEY = "fact_fluff_music_data";
+  let cfg = JSON.parse(localStorage.getItem(STORE_KEY) || JSON.stringify({
+    urls: { "1":"", "2":"", "3":"", "4":"", "5":"" },
+    vol: 0.30 // Âm lượng nhỏ vừa (30%)
+  }));
+
+  let player = null;
+  let playingKey = null;
+
+  // Ẩn / hiện popup cài đặt link
+  const pop = document.getElementById("musicPopup");
+  document.getElementById("toggleMusicBtn").onclick = () => {
+    pop.style.display = pop.style.display === "none" ? "block" : "none";
+  };
+
+  // Khởi tạo link & âm lượng
+  for (let i = 1; i <= 5; i++) {
+    const input = document.getElementById("mUrl" + i);
+    input.value = cfg.urls[i] || "";
+    input.oninput = (e) => {
+      cfg.urls[i] = e.target.value.trim();
+      localStorage.setItem(STORE_KEY, JSON.stringify(cfg));
+    };
+  }
+
+  const volSlider = document.getElementById("mVol");
+  const volLabel = document.getElementById("mVolNum");
+  volSlider.value = Math.round(cfg.vol * 100);
+  volLabel.innerText = volSlider.value + "%";
+  volSlider.oninput = (e) => {
+    volLabel.innerText = e.target.value + "%";
+    cfg.vol = e.target.value / 100;
+    if (player) player.volume = cfg.vol;
+    localStorage.setItem(STORE_KEY, JSON.stringify(cfg));
+  };
+
+  // Xử lý bật / tắt nhạc
+  function toggleTrack(key) {
+    const url = cfg.urls[key];
+    if (!url) return;
+
+    if (playingKey === key && player) {
+      if (!player.paused) {
+        player.pause();
+      } else {
+        player.play();
+      }
+      return;
+    }
+
+    if (player) {
+      player.pause();
+      player.currentTime = 0;
+    }
+
+    player = new Audio(url);
+    player.volume = cfg.vol || 0.30;
+    playingKey = key;
+    player.play().catch(e => console.log("Cần click chuột vào web trước để trình duyệt cho phép phát:", e));
+    player.onended = () => { player = null; playingKey = null; };
+  }
+
+  // Bắt phím tắt 1, 2, 3, 4, 5 và phím 0
+  document.addEventListener("keydown", (e) => {
+    const tag = (document.activeElement?.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || document.activeElement?.isContentEditable) return;
+
+    const num = e.key.replace("Numpad", "");
+    if (["1", "2", "3", "4", "5"].includes(num)) {
+      e.preventDefault();
+      toggleTrack(num);
+    } else if (num === "0" && player) {
+      player.pause();
+      player.currentTime = 0;
+      player = null;
+      playingKey = null;
+    }
+  });
+})();
+</script>
 </body>
 </html>
